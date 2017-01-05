@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<title> Employee Appliation </title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script><script>
+var helloApp = angular.module("myApp", []);
+helloApp.controller("EmployeeCtrl", function($scope) {
+
+$scope.companies = [{'name':'Thirumavalavan G',
+					'age':'26',
+					'designation':'Senior Software Engineer',
+					'salary':'7 lakhs'}];
+
+$scope.addRow = function(){
+$scope.companies.push({ 'name':$scope.name, 'age': $scope.age, 'designation':$scope.designation, 'salary':$scope.salary });
+$scope.name='';
+$scope.age='';
+$scope.designation='';
+$scope.salary='';
+};
+
+
+
+$scope.assign = function()
+{
+$scope.assign_name='Mr. Assign';
+$scope.assign_age='30';
+$scope.assign_designation='Technical Lead';
+$scope.assign_salary='17 Lakhs';
+};	
+});
+</script>
+<body ng-controller="EmployeeCtrl">
+<div class="jumborton">
+<div class="container">
+<h1 class="page-header">My Employee Details </h1>
+</div>
+<div class="container">
+<form class="form-horizontal" role="form" ng-submit="addRow()">
+	<div class="form-group">
+		<label class="col-md-2 control-label">Name</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="name"
+				ng-model="name" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Age</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="age"
+				ng-model="age" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Designation</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="designation"
+				ng-model="designation" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Salary</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="salary"
+				ng-model="salary" />
+		</div>
+	</div>
+	<div class="form-group">								
+		<div style="padding-left:43%">
+			<input type="submit" value="Add" class="btn btn-primary"/>
+		</div>
+	</div>
+</form>
+<table class="table" style="background-color:#F4F4F4">
+    <tr>
+    <th>Name
+    </th>
+    <th>Age
+    </th>
+    <th>Designation
+    </th>
+	<th>salary
+    </th>
+</tr>
+<tr ng-repeat="company in companies">
+	<td>{{company.name}}
+	</td>
+	<td>{{company.age}}
+	</td>
+	<td>{{company.designation}}
+	</td>
+	<td>{{company.salary}}
+	</td>
+</tr>
+
+</table>
+</div>
+</div>
+<div class="container">
+<h3 class="page-header">To assign Values</h3>
+</div>
+<div class="container">
+<form class="form-horizontal" role="form">
+	<div class="form-group">								
+		<div style="padding-left:43%">
+			<input type="submit" value="Assign" class="btn btn-primary" ng-click="assign()"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Name</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="assign_name"
+				ng-model="assign_name" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Age</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="assign_age"
+				ng-model="assign_age" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Designation</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="assign_designation"
+				ng-model="assign_designation" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Salary</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="assign_salary"
+				ng-model="assign_salary" />
+		</div>
+	</div>
+
+</form>
+</div>
+</body>
+</html>
